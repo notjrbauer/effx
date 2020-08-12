@@ -51,7 +51,7 @@ func (w *worker) Start(ctx context.Context) {
 			select {
 			case <-time.Tick(time.Second):
 				i := w.count.get()
-				lv = ((i - lv) / c)
+				lv = ((i + lv) / c)
 				w.average.set(lv)
 				w.l.Println(lv * int32(60))
 				c++
